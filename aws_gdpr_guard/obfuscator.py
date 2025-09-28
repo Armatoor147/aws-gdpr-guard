@@ -12,4 +12,4 @@ def obfuscate_file(file_to_obfuscate, pii_fields):
     Raises:
         [Complete this once I know what needs to be raised]
     """
-    pass
+    return None
