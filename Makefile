@@ -1,13 +1,14 @@
+SHELL := /bin/bash
 PYTHON ?= python3
 .PHONY: virtual-environment upgrade-pip requirements run-black run-bandit run-pytest run-coverage run-pip-audit run-checks
 
 virtual-environment:
 	@if [ ! -d "venv" ]; then \
-		echo
+		echo ; \
 		echo "   >>> Creating virtual environment with $(PYTHON)"; \
 		$(PYTHON) -m venv venv; \
 	else \
-		echo
+		echo ; \
 		echo "   >>> Virtual environment already exists (venv/)"; \
 	fi
 
@@ -27,7 +28,7 @@ upgrade-pip:
 requirements:
 	@echo
 	@echo "\033[1;31m"
-	@echo "   >>> Installing requirements from requirement.txt"
+	@echo "   >>> Installing requirements from requirements.txt"
 	@echo "\033[0m"
 	$(call execute_in_venv, pip install -r requirements.txt)
 
