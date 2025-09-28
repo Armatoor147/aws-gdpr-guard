@@ -1,0 +1,21 @@
+student_id,name,course,cohort,graduation_date,email_address
+1234,"John Smith",Software,2024-11-02,2025-03-31,j.smith@email.com
+1235,"Mia Johnson",Data,2024-09-01,2025-01-31,m.johnson@email.com
+1236,"David Lee",Software,2025-01-15,2025-06-30,d.lee@email.com
+1237,"Sarah Chen",Data,2024-11-02,2025-03-31,s.chen@email.com
+1238,"Robert Brown",Software,2024-09-01,2025-01-31,r.brown@email.com
+1239,"Emily Green",Data,2025-01-15,2025-06-30,e.green@email.com
+1240,"Michael Davis",Software,2024-11-02,2025-03-31,m.davis@email.com
+1241,"Olivia Wilson",Data,2024-09-01,2025-01-31,o.wilson@email.com
+1242,"Chris Garcia",Software,2025-01-15,2025-06-30,c.garcia@email.com
+1243,"Jessica Martinez",Data,2024-11-02,2025-03-31,j.martinez@email.com
+1244,"Andrew Rodriguez",Software,2024-09-01,2025-01-31,a.rodriguez@email.com
+1245,"Megan Harris",Data,2025-01-15,2025-06-30,m.harris@email.com
+1246,"Daniel Clark",Software,2024-11-02,2025-03-31,d.clark@email.com
+1247,"Laura King",Data,2024-09-01,2025-01-31,l.king@email.com
+1248,"James White",Software,2025-01-15,2025-06-30,j.white@email.com
+1249,"Anna Baker",Data,2024-11-02,2025-03-31,a.baker@email.com
+1250,"Kevin Scott",Software,2024-09-01,2025-01-31,k.scott@email.com
+1251,"Nicole Adams",Data,2025-01-15,2025-06-30,n.adams@email.com
+1252,"Ryan Murphy",Software,2024-11-02,2025-03-31,r.murphy@email.com
+1253,"Maria Lopez",Data,2024-09-01,2025-01-31,m.lopez@email.com
