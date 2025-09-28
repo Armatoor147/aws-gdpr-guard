@@ -1,1 +1,5 @@
 pytest
+pip-audit
+bandit
+black
+coverage
