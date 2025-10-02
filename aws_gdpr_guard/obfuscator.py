@@ -6,11 +6,14 @@ from botocore.exceptions import ClientError
 import re
 from typing import Tuple, Sequence
 
-# Get AWS credentials
-load_dotenv()
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
+# Get AWS credentials
+IS_LOCAL = os.getenv('AWS_LAMBDA_FUNCTION_NAME') is None
+if IS_LOCAL:
+    from dotenv import load_dotenv
+    load_dotenv()
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 def split_S3_URI(s3_uri: str) -> Tuple[str, str]:
     """
@@ -129,13 +132,16 @@ def obfuscate_file(file_to_obfuscate: str, pii_fields: Sequence[str]):
         s3_client = boto3.client("s3")
 
         # Save S3 bucket (CSV) file as a table variable
-        data = read_CSV_file_from_S3_bucket(s3_client, bucket_name, object_name)
+        data_df = read_CSV_file_from_S3_bucket(s3_client, bucket_name, object_name)
 
         # Obfuscate relevant columns
-        data = obfuscate_df(data, pii_fields)
+        obfuscated_data_df = obfuscate_df(data_df, pii_fields)
+
+        # Turn dataframe to bytes
+        bytes_data = obfuscated_data_df.to_csv(index=False).encode()
 
         # Return Obfuscated table
-        return data
+        return bytes_data
     except:
         # Handle every type of error in obfuscate_file !!!
         pass
@@ -143,9 +149,21 @@ def obfuscate_file(file_to_obfuscate: str, pii_fields: Sequence[str]):
 
 
 if __name__ == "__main__":
-    file_to_obfuscate = (
-        "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.csv"
-    )
-    pii_fields = ["name", "email_address"]
-    data = obfuscate_file(file_to_obfuscate, pii_fields)
+    # file_to_obfuscate = (
+    #     "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.csv"
+    # )
+    # pii_fields = ["name", "email_address"]
+    # data = obfuscate_file(file_to_obfuscate, pii_fields)
+    # bytes_data = data.to_csv(index=False).encode()
+
+    # s3_client = boto3.client("s3")
+    # s3_client.put_object(Bucket="vincent-toor-azorin-aws-gdpr-guard-test-bucket", Key="obfuscated_dummy_students.csv", Body=bytes_data)
+
+    file_to_read = "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/obfuscated_dummy_students.csv"
+    bucket_name, object_name = split_S3_URI(file_to_read)
+    s3_client = boto3.client("s3")
+    data = read_CSV_file_from_S3_bucket(s3_client, bucket_name, object_name)
     print(data)
+    
+
+    
