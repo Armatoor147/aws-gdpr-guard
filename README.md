@@ -54,7 +54,7 @@ pip install aws_gdpr_guard
     - Provide user access to the AWS Management Console - optional: No
     - Permissions options: Attach policies directly
     - Permissions policies: [Find the IAM policy that you created] (e.g. S3-Access-aws_gdpr_guard_user)
-* Go to **IAM** → **Users**:
+* Go to **IAM** → **Users**
 * Enter the IAM user that you created:
     - Go to **Security credentials**
     - Click **Create access key**
@@ -114,6 +114,22 @@ pip install aws_gdpr_guard
     - Restrict S3 permissions to the specific bucket.
     - For production, use IAM roles (not IAM users) and avoid .env files (use AWS Secrets Manager or SSM Parameter Store).
 
+
+### Option B (AWS Lambda)
+
+- create IAM user:
+    ...
+* Go to **IAM** → **Users**
+* Enter the IAM user that you created:
+    - Go to **Security credentials**
+    - Click **Create access key**
+    - Use case: Application running outside AWS
+    - Copy and paste the credentials (Acess key ID and Secret access key) safely (e.g. AWS Secrets Manager)
+* Go to your local terminal and enter:
+    ```bash
+    aws configure
+    ```
+* Enter credentials 
 
 ## Troubleshooting
 * `"AccessDenied"` errors? Check IAM policies and bucket names.
