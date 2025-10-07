@@ -131,6 +131,65 @@ pip install aws_gdpr_guard
     ```
 * Enter credentials 
 
+### Option C (EC2)
+Manually:
+- Launch EC2 instance
+- Connect to instance
+    In terminal:
+        ```bash
+        chmod 400 aws_gdpr_guard_key.pem
+        ssh -i "keys/aws_gdpr_guard_key.pem" ec2-user@51.21.255.135
+        exit
+        ```
+- Transfer Python library
+    In terminal:
+        ```bash
+        scp -i keys/aws_gdpr_guard_key.pem -r aws_gdpr_guard/ ec2-user@51.21.255.135:/home/ec2-user/
+        ```
+- Install dependencies
+    In EC2 instance:
+        ```bash
+        sudo yum update
+        sudo yum install python3 python3-pip
+        pip3 install -r aws_gdpr_guard/requirements.txt
+        ```
+- Run library
+    In EC2 instance:
+        ```bash
+        python3 ec2_script.py
+        ```
+
+Terraform:
+```bash
+cd terraform-ec2-deployment
+chmod +x pre_terraform.sh
+./pre_terraform.sh
+terraform apply
+```
+
+Copy the EC2 instance's public IP from the terraform ouput and enter EC2 instance:
+```bash
+chmod 400 keys/aws_gdpr_guard_key.pem # If the SSH connection below doesn't work
+ssh -i keys/aws_gdpr_guard_key.pem ec2-user@<EC2_instance_IP>
+```
+
+Setup:
+```bash
+chmod +x ec2_setup.sh
+./ec2_setup.sh
+```
+
+Source into virtual environment:
+```bash
+source venv/bin/activate
+```
+
+Run script:
+```bash
+python3 ec2_script.py
+```
+
+
 ## Troubleshooting
 * `"AccessDenied"` errors? Check IAM policies and bucket names.
 * Missing `.env`? Ensure the file is in the same directory as your script.

@@ -11,4 +11,6 @@ venv
 **/terraform.tfstate
 **/terraform.tfstate.backup
 
+terraform-ec2-deployment/terraform.tfvars
+
 keys/
