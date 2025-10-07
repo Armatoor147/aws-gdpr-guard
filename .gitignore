@@ -5,12 +5,17 @@ venv
 **/__pycache__/
 .coverage
 
+keys/
+
 **/.terraform/
 **/.terraform.lock.hcl
 **/.terraform.tfstate.lock.info
 **/terraform.tfstate
 **/terraform.tfstate.backup
 
-terraform-ec2-deployment/terraform.tfvars
+terraform-lambda-deployment/layer/
+terraform-lambda-deployment/lambda_function.zip
+terraform-lambda-deployment/aws_gdpr_guard_layer.zip
 
-keys/
+terraform-ec2-deployment/terraform.tfvars
+terraform-ec2-deployment/aws_gdpr_guard.zip
