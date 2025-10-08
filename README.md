@@ -124,7 +124,7 @@ pip install aws_gdpr_guard
     - Go to **Security credentials**
     - Click **Create access key**
     - Use case: Application running outside AWS
-    - Copy and paste the credentials (Acess key ID and Secret access key) safely (e.g. AWS Secrets Manager)
+    - Copy and paste the credentials (Acess key ID and Secret access key) safely (e.g. AWS Secrets Manager?)
 * Go to your local terminal and enter:
     ```bash
     aws configure
