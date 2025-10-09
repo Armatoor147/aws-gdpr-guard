@@ -15,6 +15,12 @@ resource "local_file" "private_key" {
     file_permission = "0400"
 }
 
+# EC2 Instance Profile
+resource "aws_iam_instance_profile" "EC2-instance-profile" {
+    name = "EC2_instance_profile"
+    role = aws_iam_role.aws_gdpr_guard-EC2-IAM-role.name
+}
+
 # EC2 Instance
 resource "aws_instance" "aws_gdpr_guard-EC2-instance" {
     ami = "ami-04c08fd8aa14af291"
@@ -23,10 +29,16 @@ resource "aws_instance" "aws_gdpr_guard-EC2-instance" {
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     subnet_id = aws_subnet.public.id
     associate_public_ip_address = true
+    iam_instance_profile = aws_iam_instance_profile.EC2-instance-profile.name
 
     tags = {
         Name = "aws_gdpr_guard-EC2-instance"
     }
+
+    user_data = <<-EOF
+        #!/bin/bash
+        echo "S3_BUCKET_NAME=${local.bucket_name}" > /home/ec2-user/.env
+    EOF
 
     provisioner "file" {
         source = "${path.module}/aws_gdpr_guard.zip"
