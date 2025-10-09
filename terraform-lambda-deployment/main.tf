@@ -35,7 +35,7 @@ resource "aws_iam_policy" "lambda_s3_policy" {
         Version = "2012-10-17",
         Statement = [{
             Effect = "Allow",
-            Action = ["s3:GetObject", "s3:PutObject", "s3: ListBucket"],
+            Action = ["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
             Resource = [
                 "arn:aws:s3:::${local.bucket_name}",
                 "arn:aws:s3:::${local.bucket_name}/*"
@@ -120,10 +120,10 @@ output "lambda_arn" {
     value = aws_lambda_function.lambda_function
 }
 
-variable "S3_bucket_name" {
-    type = string
-    default = "vincent-toor-azorin-aws-gdpr-guard-test-bucket"
-}
+# variable "S3_bucket_name" {
+#     type = string
+#     default = "vincent-toor-azorin-aws-gdpr-guard-test-bucket"
+# }
 
 variable "S3_bucket_prefix" {
     type = string
