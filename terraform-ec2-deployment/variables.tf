@@ -5,5 +5,5 @@ variable "my_ip" {
 
 variable "s3_bucket_prefix" {
   type    = string
-  default = "aws-gdpr-guard-bucket"
+  default = "aws-gdpr-guard-s3-bucket"
 }
