@@ -1,4 +1,4 @@
-# Create the S3 bucket
+# S3 bucket
 resource "aws_s3_bucket" "aws_gdpr_guard_bucket" {
     bucket = local.bucket_name
 }
