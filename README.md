@@ -117,77 +117,12 @@ pip install aws_gdpr_guard
 
 ### Option B (AWS Lambda)
 
-- create IAM user:
-    ...
-* Go to **IAM** → **Users**
-* Enter the IAM user that you created:
-    - Go to **Security credentials**
-    - Click **Create access key**
-    - Use case: Application running outside AWS
-    - Copy and paste the credentials (Acess key ID and Secret access key) safely (e.g. AWS Secrets Manager?)
-* Go to your local terminal and enter:
-    ```bash
-    aws configure
-    ```
-* Enter credentials 
+
 
 ### Option C (EC2)
-Manually:
-- Launch EC2 instance
-- Connect to instance
-    In terminal:
-        ```bash
-        chmod 400 aws_gdpr_guard_key.pem
-        ssh -i "keys/aws_gdpr_guard_key.pem" ec2-user@51.21.255.135
-        exit
-        ```
-- Transfer Python library
-    In terminal:
-        ```bash
-        scp -i keys/aws_gdpr_guard_key.pem -r aws_gdpr_guard/ ec2-user@51.21.255.135:/home/ec2-user/
-        ```
-- Install dependencies
-    In EC2 instance:
-        ```bash
-        sudo yum update
-        sudo yum install python3 python3-pip
-        pip3 install -r aws_gdpr_guard/requirements.txt
-        ```
-- Run library
-    In EC2 instance:
-        ```bash
-        python3 ec2_script.py
-        ```
 
-Terraform:
-```bash
-cd terraform-ec2-deployment
-chmod +x pre_terraform.sh
-./pre_terraform.sh
-terraform apply
-```
 
-Copy the EC2 instance's public IP from the terraform ouput and enter EC2 instance:
-```bash
-chmod 400 keys/aws_gdpr_guard_key.pem # If the SSH connection below doesn't work
-ssh -i keys/aws_gdpr_guard_key.pem ec2-user@<EC2_instance_IP>
-```
 
-Setup:
-```bash
-chmod +x ec2_setup.sh
-./ec2_setup.sh
-```
-
-Source into virtual environment:
-```bash
-source venv/bin/activate
-```
-
-Run script:
-```bash
-python3 ec2_script.py
-```
 
 
 ## Troubleshooting
