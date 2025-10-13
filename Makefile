@@ -49,14 +49,14 @@ run-bandit:
 	@echo "\033[1;31m"
 	@echo "   >>> Running bandit"
 	@echo "\033[0m"
-	$(call execute_in_venv, bandit -r aws_gdpr_guard/ test/)
+	$(call execute_in_venv, bandit -r aws_gdpr_guard/)
 
 run-pytest:
 	@echo
 	@echo "\033[1;31m"
 	@echo "   >>> Running pytest"
 	@echo "\033[0m"
-	$(call execute_in_venv, pytest test/)
+	$(call execute_in_venv, coverage run -m pytest test/)
 
 run-coverage:
 	@echo

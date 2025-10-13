@@ -30,6 +30,7 @@ pip_audit==2.9.0
 platformdirs==4.4.0
 pluggy==1.6.0
 py-serializable==2.1.0
+pyarrow==21.0.0
 Pygments==2.19.2
 pyparsing==3.2.5
 pytest==8.4.2

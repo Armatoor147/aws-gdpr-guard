@@ -6,3 +6,5 @@ pip-audit
 python-dotenv
 boto3
 pandas
+pyarrow
+moto (# Just for pytesting)
