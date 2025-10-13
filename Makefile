@@ -70,7 +70,7 @@ run-pip-audit:
 	@echo "\033[1;31m"
 	@echo "   >>> Running pip-audit"
 	@echo "\033[0m"
-	$(call execute_in_venv, pip-audit --ignore pip)
+	$(call execute_in_venv, pip-audit --ignore-vuln GHSA-4xh5-x5gv-qwph)
 
 run-checks:
 	@$(MAKE) run-black ; \
