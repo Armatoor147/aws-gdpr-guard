@@ -1,0 +1,162 @@
+[
+  {
+    "student_id":1234,
+    "name":"John Smith",
+    "course":"Software",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"j.smith@email.com"
+  },
+  {
+    "student_id":1235,
+    "name":"Mia Johnson",
+    "course":"Data",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"m.johnson@email.com"
+  },
+  {
+    "student_id":1236,
+    "name":"David Lee",
+    "course":"Software",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"d.lee@email.com"
+  },
+  {
+    "student_id":1237,
+    "name":"Sarah Chen",
+    "course":"Data",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"s.chen@email.com"
+  },
+  {
+    "student_id":1238,
+    "name":"Robert Brown",
+    "course":"Software",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"r.brown@email.com"
+  },
+  {
+    "student_id":1239,
+    "name":"Emily Green",
+    "course":"Data",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"e.green@email.com"
+  },
+  {
+    "student_id":1240,
+    "name":"Michael Davis",
+    "course":"Software",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"m.davis@email.com"
+  },
+  {
+    "student_id":1241,
+    "name":"Olivia Wilson",
+    "course":"Data",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"o.wilson@email.com"
+  },
+  {
+    "student_id":1242,
+    "name":"Chris Garcia",
+    "course":"Software",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"c.garcia@email.com"
+  },
+  {
+    "student_id":1243,
+    "name":"Jessica Martinez",
+    "course":"Data",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"j.martinez@email.com"
+  },
+  {
+    "student_id":1244,
+    "name":"Andrew Rodriguez",
+    "course":"Software",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"a.rodriguez@email.com"
+  },
+  {
+    "student_id":1245,
+    "name":"Megan Harris",
+    "course":"Data",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"m.harris@email.com"
+  },
+  {
+    "student_id":1246,
+    "name":"Daniel Clark",
+    "course":"Software",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"d.clark@email.com"
+  },
+  {
+    "student_id":1247,
+    "name":"Laura King",
+    "course":"Data",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"l.king@email.com"
+  },
+  {
+    "student_id":1248,
+    "name":"James White",
+    "course":"Software",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"j.white@email.com"
+  },
+  {
+    "student_id":1249,
+    "name":"Anna Baker",
+    "course":"Data",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"a.baker@email.com"
+  },
+  {
+    "student_id":1250,
+    "name":"Kevin Scott",
+    "course":"Software",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"k.scott@email.com"
+  },
+  {
+    "student_id":1251,
+    "name":"Nicole Adams",
+    "course":"Data",
+    "cohort":"2025-01-15",
+    "graduation_date":"2025-06-30",
+    "email_address":"n.adams@email.com"
+  },
+  {
+    "student_id":1252,
+    "name":"Ryan Murphy",
+    "course":"Software",
+    "cohort":"2024-11-02",
+    "graduation_date":"2025-03-31",
+    "email_address":"r.murphy@email.com"
+  },
+  {
+    "student_id":1253,
+    "name":"Maria Lopez",
+    "course":"Data",
+    "cohort":"2024-09-01",
+    "graduation_date":"2025-01-31",
+    "email_address":"m.lopez@email.com"
+  }
+]
