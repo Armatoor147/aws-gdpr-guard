@@ -1,125 +1,142 @@
 # GDPR Obfuscator Project
-## Project Summary
 
-ADD EXPLANATION!!!
+## Project Description
+
+### Core requirements
+
+#### 1) Purpose
+
+- Build a Python library to anonymise PII (Personally Identifiable Information) stored in AWS S3.
+- Ensure GDPR compliance by replacing sensitive data fields (e.g. names, emails) with obfuscated values (e.g. `***`).
 
 
-## Implementation
-### Option A: Local Testing
-#### 1. Prerequisites
+#### 2) Input/Output
 
-Before using the library, ensure you have:
-* An AWS account with access to IAM and S3.
-* Python 3.8+ and `pip` installed.
-* The library installed:
-```sh
-pip install aws_gdpr_guard
+- **Input**: JSON config with:
+	- S3 file path
+	- List of PII fields
+- **Output**: Byte stream of the obfuscated file (compatible with `boto3.S3.PutObject`).
+
+
+#### 3) File Handling
+
+- **MVP**: CSV support only.
+- **Future**: Extend to JSON/Parquet.
+
+
+### Technical Specification
+
+- **Language**: Python (PEP-8 compliant, unit-tested).
+- **AWS Integration**: Use `boto3` for S3 access. No hardcoded credentials.
+- **Performance**: Handle 1MB files in <1 minute.
+- **Deployment**: Lambda/ECS/EC2 (memory-efficient for Lambda).
+- **Security**: Scan for vulnerabilities; document code.
+
+
+### Key Assumptions
+
+- PII fields are pre-identified.
+- Data includes a primary key.
+- Invocation via AWS services (e.g. EventBridge) is optional for the MVP. 
+
+
+## Project Architecture
+
+This project consists of the following components:
+
+### **Python Library**: Core logic for GDPR data obfuscation.
+
+The `aws_gdpr_guard` python library includes the main obfuscator function `obfuscate_file` inside `aws_gdpr_guard.obfuscator.py` that uses the following utility functions:
+- `split_s3_uri`: Splits S3 URIs into bucket and key.
+- `read_file_from_s3_bucket`: Reads files from S3 bucket
+- `obfuscate_df`: Obfuscates DataFrame columns.
+- `dataframe_to_bytes`: Converts DataFrame to byte strings.
+
+
+### **Pytest Suite**: Unit and integration tests for the library.
+
+1) Unit testing: Validate the individual utility functions.
+2) Integration testing: Ensure the obfuscation works from start to end.
+3) Error/Exception handling: Simulate every possible error that could occur.
+4) Coverage: Verify every statement from the source code runs as espected.
+
+
+
+### **CI/CD Pipeline**: Automated testing and deployment workflows.
+
+
+Setup:
+- Set up virtual environment
+- Install requirements (from requirements-dev.txt)
+
+Checks:
+- Code quality:
+    - black: Code formatter (ensures PEP 8-compliance and consistent style)
+    - bandit: Security linter (scans Python code for common security vulnerabilities)
+- Testing
+    - pytest: Testing framework (ensures the source code functions as expected)
+    - coverage: Coverage-measuring tool (measures the percentage of executable statements covered by unit tests)
+- Security
+    - pip-audit: Package security tool (scans the Python environment's dependencies for known security vulnerabilities)
+
+
+### **Infrastructure as Code (IaC)**: Terraform modules for deploying the library.
+
+- AWS Lambda (serverless)
+- EC2 (VMs)
+- ECS (containers)
+
+
+## GitHub Repository Structure
+
+```
+aws-gdpr-guard
+├── aws_gdpr_guard/                 # Python Library
+│   ├── __init__.py
+│   ├── obfuscator.py
+│   ├── requirements.txt
+├── tests/                          # Pytest Suite
+│   ├── test_obfuscator.py
+├── Makefile
+├── .github/workflows/deploy.yml    # CI/CD Pipeline
+├── terraform-lambda-deployment     # Lambda deployment
+├── terraform-ec2-deployment        # EC2 deployment
+├── terraform-ecs-deployment        # ECS deployment
+├── ec2_script.py                   # EC2 deployment script
+├── lambda_function.py              # AWS Lambda function
+├── local_script.py                 # Local deployment script
+├── dummy_data                      # Test data
+├── .gitignore
+├── requirements.txt                # Production Dependencies
+├── requirements-dev.txt            # Development Dependencies
+├── requirements.in                 # Top-level dependencies
+├── docs/                           # Deployment documentations
+└── README.md
 ```
 
 
-#### 2. AWS Setup
+## Development Plan
 
-* Locate the S3 bucket with the file that you want to obfuscate.
-* Go to **IAM** → **Policies** → **Create policy**:
-    - Policy editor: JSON
-    - Attach the following custom policy:
-        ```
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Sid": "AllowGetObject",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-                },
-                {
-                    "Sid": "AllowListBucket",
-                    "Effect": "Allow",
-                    "Action": "s3:ListBucket",
-                    "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME"
-                },
-                {
-                    "Sid": "AllowPutObject",
-                    "Effect": "Allow",
-                    "Action": "s3:PutObject",
-                    "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-                }
-            ]
-        }
-        ```
-    - Policy name: (e.g. S3-Access-aws_gdpr_guard_user)
-* Go to **IAM** → **Users** → **Create user**:
-    - User name: (e.g. aws_gdpr_guard_user)
-    - Provide user access to the AWS Management Console - optional: No
-    - Permissions options: Attach policies directly
-    - Permissions policies: [Find the IAM policy that you created] (e.g. S3-Access-aws_gdpr_guard_user)
-* Go to **IAM** → **Users**
-* Enter the IAM user that you created:
-    - Go to **Security credentials**
-    - Click **Create access key**
-    - Use case: Application running outside AWS
-    - Copy and paste the credentials (Acess key ID and Secret access key) into a `.env` file in your root project directory:
-        ```
-        #.env (environment variables)
-        AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
-        AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        AWS_REGION=eu-north-1 # Optional
-        ```
+The project was developed in the following phases:
+
+1. Designed and implemented the Python library and pytest suite.
+2. Set up a CI/CD pipeline using Makefile and GitHub Actions to automate testing and ensure code quality.
+3. Manually deployed the library to AWS Lambda, EC2, and ECS to validate compatibility.
+4. Translated the infrastructure into Terraform modules for automated deployments.
+5. Integrated Terraform deployments into the CI/CD pipeline for seamless testing and deployment.
 
 
-#### 3. Install and Configure the Library
-* Install Dependencies:
-    ```sh
-    pip install requirements.txt
-    ```
-* Create a Python file
-* Load Credentials:
-    ```python
-    from dotenv import load_dotenv
-    load_dotenv()  # Loads AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
-    ```
-* Use the Library:
-    ```python
-    from aws_gdpr_guard import obfuscate_file
-    obfuscated_data = obfuscate_file(
-        file_to_obfuscate="s3://YOUR_BUCKET_NAME/path/to/file.csv"
-        pii_fields=["name", "email", "phone_number"] # Columns to obfuscate
-    )
-    ```
+## Implementation
 
-* Example Workflow:
-    ```python
-    from dotenv import load_dotenv
-    from aws_gdpr_guard import obfuscate_file
-    import boto3
+Have a look at `/docs`:
 
-    load_dotenv()
-    obfuscated_data = obfuscate_file(
-        file_to_obfuscate="s3://YOUR_BUCKET_NAME/file_to_obfuscate.csv"
-        pii_fields=["name", "email", "phone_number"]
-    )
-    s3_client = boto3.client("s3")
+* Option A: [Local Testing](docs/local.md)
 
-    # Store obfuscated data into an S3 bucket file (IAM user must have PutObject permission on the S3 bucket)
-    s3_client.put_object(
-        Bucket="YOUR_BUCKET_NAME",
-        Key="obfuscated_file.csv",
-        Body=obfuscated_data
-    )
-    ```
+* Option B: [AWS Lambda](docs/lambda.md)
 
-* Security Warnings:
-    - Never hardcode credentials in your script.
-    - Restrict S3 permissions to the specific bucket.
-    - For production, use IAM roles (not IAM users) and avoid .env files (use AWS Secrets Manager or SSM Parameter Store).
+* Option C: [EC2](docs/ec2.md)
 
-
-### Option B (AWS Lambda)
-
-
-
-### Option C (EC2)
+* Option D: [ECS](docs/ecs.md)
 
 
 
