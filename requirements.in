@@ -4,10 +4,10 @@ pandas
 pyarrow
 
 # Development and Testing
-# black
-# bandit
-# pytest
-# coverage
-# pip-audit
-# moto
-# python-dotenv # Only if using a `.env` file
+black
+bandit
+pytest
+coverage
+pip-audit
+moto
+python-dotenv # Only if using a `.env` file
