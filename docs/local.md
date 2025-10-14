@@ -3,7 +3,7 @@
 ## Prerequisites
 
 * AWS account with console access (specifically IAM and S3).
-* Python 3.8+ and `pip` installed.
+* Python 3.10+ and `pip` installed.
 
 
 ## Deployment Steps
@@ -49,13 +49,23 @@
     - Go to **Security credentials**
     - Click **Create access key**
     - Use case: Application running outside AWS
-    - Store the credentials (Acess key ID and Secret access key) into a `.env` file in your root project directory:
-        ```
-        # .env (environment variables)
-        AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
-        AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        AWS_REGION=eu-north-1 # Optional
-        ```
+    - Store the credentials (Acess key ID and Secret access key) in any of the following ways (boto3 automatically detects them):
+        - Using a `.env` file in your root project directory:
+            ```
+            # .env (environment variables)
+            AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
+            AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            AWS_REGION=eu-north-1 # Optional
+            ```
+        - Setting environment variables directly:
+            ```sh
+            export AWS_ACCESS_KEY_ID="AKIAxxxxxxxxxxxxxxx"
+            export AWS_SECRET_ACCESS_KEY="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+            ```
+        - Using the AWS CLI:
+            ```sh
+            aws configure
+            ```
 
 ### 2. Install and Configure the Library
 
@@ -86,8 +96,7 @@ pip install aws_gdpr_guard
 
 ### 3. Use the Library
 * Create a Python file. If using the GitHub repository, ensure the file is placed inside the root directory.
-* Store the `.env` file (with your AWS credentials) next to the Python file.
-* Load credentials:
+* If using a `.env` file (with your AWS credentials), store it next to the Python file, and load credentials:
     ```python
     from dotenv import load_dotenv
     load_dotenv()  # Loads AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
@@ -103,11 +112,13 @@ pip install aws_gdpr_guard
 
 * Example workflow:
     ```python
-    from dotenv import load_dotenv
     from aws_gdpr_guard import obfuscate_file
     import boto3
 
+    # Optional: Only needed if using a .env file
+    from dotenv import load_dotenv
     load_dotenv()
+
     obfuscated_data = obfuscate_file(
         file_to_obfuscate="s3://YOUR_BUCKET_NAME/file_to_obfuscate.csv"
         pii_fields=["name", "email", "phone_number"]

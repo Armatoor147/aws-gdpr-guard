@@ -1,13 +1,13 @@
 # Production, Development and Testing
-python-dotenv
 boto3
 pandas
 pyarrow
 
 # Development and Testing
-black
-bandit
-pytest
-coverage
-pip-audit
-moto
+# black
+# bandit
+# pytest
+# coverage
+# pip-audit
+# moto
+# python-dotenv # Only if using a `.env` file

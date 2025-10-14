@@ -1,4 +1,3 @@
-import os
 import io
 import pandas as pd
 import boto3
@@ -8,13 +7,14 @@ from typing import Tuple, Sequence
 
 
 # Get AWS credentials
-IS_LOCAL = os.getenv("AWS_LAMBDA_FUNCTION_NAME") is None
-if IS_LOCAL:
-    from dotenv import load_dotenv
+# IS_LOCAL = os.getenv("AWS_LAMBDA_FUNCTION_NAME") is None
+# if IS_LOCAL:
+#     import os
+#     from dotenv import load_dotenv
 
-    load_dotenv()
-    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+#     load_dotenv()
+#     AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+#     AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 
 def split_s3_uri(s3_uri: str) -> Tuple[str, str]:
