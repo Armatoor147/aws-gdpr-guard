@@ -28,9 +28,9 @@ upgrade-pip:
 requirements:
 	@echo
 	@echo "\033[1;31m"
-	@echo "   >>> Installing requirements from requirements.txt"
+	@echo "   >>> Installing requirements from requirements-dev.txt"
 	@echo "\033[0m"
-	$(call execute_in_venv, pip install -r requirements.txt)
+	$(call execute_in_venv, pip install -r requirements-dev.txt)
 
 setup:
 	@$(MAKE) virtual-environment ; \

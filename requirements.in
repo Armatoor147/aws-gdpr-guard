@@ -1,10 +1,13 @@
+# Production, Development and Testing
+python-dotenv
+boto3
+pandas
+pyarrow
+
+# Development and Testing
 black
 bandit
 pytest
 coverage
 pip-audit
-python-dotenv
-boto3
-pandas
-pyarrow
-moto (# Just for pytesting)
+moto
