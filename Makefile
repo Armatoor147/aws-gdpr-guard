@@ -42,7 +42,7 @@ run-black:
 	@echo "\033[1;31m"
 	@echo "   >>> Running black"
 	@echo "\033[0m"
-	$(call execute_in_venv, black --check aws_gdpr_guard/ test/)
+	$(call execute_in_venv, black --check aws_gdpr_guard/ tests/)
 
 run-bandit:
 	@echo
@@ -56,7 +56,7 @@ run-pytest:
 	@echo "\033[1;31m"
 	@echo "   >>> Running pytest"
 	@echo "\033[0m"
-	$(call execute_in_venv, coverage run -m pytest test/)
+	$(call execute_in_venv, coverage run -m pytest tests/)
 
 run-coverage:
 	@echo
