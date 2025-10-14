@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 PYTHON ?= python3
-.PHONY: virtual-environment upgrade-pip requirements run-black run-bandit run-pytest run-coverage run-pip-audit run-checks
+.PHONY: virtual-environment requirements run-black run-bandit run-pytest run-coverage run-pip-audit run-checks
 
 virtual-environment:
 	@if [ ! -d "venv" ]; then \
@@ -18,13 +18,6 @@ define execute_in_venv
 	$(ACTIVATE_ENV) && $1
 endef
 
-upgrade-pip:
-	@echo
-	@echo "\033[1;31m"
-	@echo "   >>> Upgrading pip"
-	@echo "\033[0m"
-	$(call execute_in_venv, python -m pip install --upgrade pip)
-
 requirements:
 	@echo
 	@echo "\033[1;31m"
@@ -34,7 +27,6 @@ requirements:
 
 setup:
 	@$(MAKE) virtual-environment ; \
-	$(MAKE) upgrade-pip ; \
 	$(MAKE) requirements ;
 
 run-black:
