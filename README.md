@@ -107,10 +107,10 @@ aws-gdpr-guard
 ├── local_script.py                 # Local deployment script
 ├── dummy_data                      # Test data
 ├── .gitignore
-├── requirements.txt                # Production Dependencies
-├── requirements-dev.txt            # Development Dependencies
+├── requirements.txt                # Production dependencies
+├── requirements-dev.txt            # Development dependencies
 ├── requirements.in                 # Top-level dependencies
-├── docs/                           # Deployment documentations
+├── docs/                           # Deployment documentation
 └── README.md
 ```
 
