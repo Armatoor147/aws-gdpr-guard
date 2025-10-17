@@ -394,5 +394,3 @@ class Test_obfuscate_file:
 
         with pytest.raises(ObfuscationError, match="Unexpected obfuscation error"):
             obfuscate_file(file_to_obfuscate, pii_fields)
-
-    # Test every type of error in obfuscate_file !!!
