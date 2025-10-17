@@ -1,0 +1,52 @@
+# Git files
+.git/
+.gitignore
+.github/
+
+# Test files
+tests/
+
+# Dummy/test data
+dummy_data/
+
+# Terraform files
+terraform-lambda-deployment/
+terraform-ec2-deployment/
+terraform-ecs-deployment/
+
+# Local scripts (if not used in the container)
+local_script.py
+lambda_function.py
+ec2_script.py
+
+# Python cache and virtual environments
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+.coverage
+venv/
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# Documentation
+README.md
+docs/
+
+# Requirements
+requirements-dev.txt
+requirements.in
+
+# Makefile
+Makefile
+
+
+
+# TO BE INCLUDED IN DOCKER IMAGE
+# aws_gdpr_guard
+# ecs_script.py
+# requirements.txt
+# .dockerignore
+# Dockerfile
