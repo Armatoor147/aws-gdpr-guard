@@ -2,7 +2,7 @@
 
 # Store local IP address
 touch terraform.tfvars
-MY_IP=$(curl -s ifconfig.me)/32
+MY_IP=$(curl -4 -s ifconfig.me)/32
 echo "my_ip = \"$MY_IP\"" > terraform.tfvars
 
 # Zip package
