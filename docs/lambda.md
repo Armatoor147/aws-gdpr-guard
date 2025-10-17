@@ -33,8 +33,8 @@
                     "Effect": "Allow",
                     "Action": "s3:*",
                     "Resource": [
-                        "arn:aws:s3:::aws-gdpr-guard-s3-bucket-*",
-                        "arn:aws:s3:::aws-gdpr-guard-s3-bucket-*/*"
+                        "arn:aws:s3:::aws-gdpr-guard-lambda-deployment-s3-bucket-*",
+                        "arn:aws:s3:::aws-gdpr-guard-lambda-deployment-s3-bucket-*/*"
                     ]
                 },
                 {
@@ -76,6 +76,19 @@ After applying Terraform, the name of the Lambda function will be output in your
 3. You can:
     * Run the function as-is to see the obfuscated data printed in the logs.
     * Modify the code with your own script if needed, then test again.
+
+
+### 4. Cleanup
+
+```sh
+# Delete all resources created by Terraform
+terraform destroy
+
+# Clean up Terraform-generated files
+rm aws_gdpr_guard_layer.zip
+rm -r layer/
+rm lambda_function.zip
+```
 
 
 ## Notes

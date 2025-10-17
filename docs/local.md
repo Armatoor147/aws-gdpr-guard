@@ -3,7 +3,7 @@
 ## Prerequisites
 
 * AWS account with console access (specifically IAM and S3).
-* Python 3.10+ and `pip` installed.
+* Python 3.11+ and `pip` installed.
 
 
 ## Deployment Steps

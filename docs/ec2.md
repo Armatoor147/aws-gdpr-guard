@@ -33,8 +33,8 @@
                     "Effect": "Allow",
                     "Action": "s3:*",
                     "Resource": [
-                        "arn:aws:s3:::aws-gdpr-guard-s3-bucket-*",
-                        "arn:aws:s3:::aws-gdpr-guard-s3-bucket-*/*"
+                        "arn:aws:s3:::aws-gdpr-guard-ec2-deployment-s3-bucket-*",
+                        "arn:aws:s3:::aws-gdpr-guard-ec2-deployment-s3-bucket-*/*"
                     ]
                 },
                 {
@@ -51,6 +51,7 @@
     * Select Application running outside AWS.
     * Securely store the Access Key ID and Secret Access Key.
 
+
 ### 2. Configure AWS CLI and Deploy with Terraform
 
 Run the following commands in your terminal:
@@ -61,12 +62,15 @@ aws configure
 # Navigate to the Terraform directory for EC2 deployment
 cd terraform-ec2-deployment
 
+# Run pre-terraform configuration and apply terraform
 chmod +x pre_terraform.sh
 ./pre_terraform.sh
 terraform apply
 ```
 
+
 ### 3. Test the EC2 Instance
+
 After applying Terraform, the public IP of the EC2 instance will be output in your terminal. Use this IP to connect to the instance via SSH:
 ```sh
 # Ensure the SSH key has the correct permissions
@@ -87,6 +91,19 @@ source venv/bin/activate
 
 # Run the script to see the obfuscated data
 python3 ec2_script.py
+```
+
+
+### 4. Cleanup
+
+```sh
+# Delete all resources created by Terraform
+terraform destroy
+
+# Clean up pre-Terraform and Terraform-generated files
+rm terraform.tfvars
+rm -r keys/
+rm aws_gdpr_guard.zip
 ```
 
 
