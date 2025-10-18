@@ -226,14 +226,14 @@ class ObfuscationError(Exception):
     pass
 
 
-if __name__ == "__main__":
-    file_to_obfuscate = (
-        "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.parquet"
-    )
-    pii_fields = ["name", "email_address"]
-    data_type = "parquet"
-    bytes_data = obfuscate_file(file_to_obfuscate, pii_fields, data_type)
-    print(bytes_data)
+# if __name__ == "__main__":
+#     file_to_obfuscate = (
+#         "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.parquet"
+#     )
+#     pii_fields = ["name", "email_address"]
+#     data_type = "parquet"
+#     bytes_data = obfuscate_file(file_to_obfuscate, pii_fields, data_type)
+#     print(bytes_data)
 
     # buffer = io.BytesIO(bytes_data)
     # df = pd.read_parquet(buffer)
