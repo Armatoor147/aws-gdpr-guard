@@ -39,6 +39,7 @@ resource "aws_instance" "aws_gdpr_guard_ec2_instance" {
 
   user_data = <<-EOF
         #!/bin/bash
+        echo "S3_BUCKET_NAME=${local.bucket_name}" >> /etc/environment
         echo "S3_BUCKET_NAME=${local.bucket_name}" > /home/ec2-user/.env
     EOF
 
