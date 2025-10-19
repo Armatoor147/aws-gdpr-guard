@@ -163,9 +163,9 @@ The GitHub Actions CI/CD pipeline successfully executed all checks:
 The GitHub Actions CI/CD pipeline successfully executed all checks:
    Check      | Result                                                                 |
  |------------|------------------------------------------------------------------------|
- | black      | 0 files needed reformatting (style enforced)                            |
- | bandit     | No issues identified (210 lines scanned)                              |
- | pytest     | All 24 tests passed in 2.95s                                          |
+ | black      | 4 files would be left unchanged (style enforced)                       |
+ | bandit     | No issues identified (215 lines scanned)                               |
+ | pytest     | All 24 tests passed in 2.95s                                           |
  | coverage   | 100% coverage (294 statements, 0 missed)                               |
  | pip-audit  | No known vulnerabilities found  
 
