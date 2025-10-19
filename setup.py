@@ -11,9 +11,9 @@ setup(
     url="https://github.com/Armatoor147/aws-gdpr-guard",
     packages=find_packages(),
     install_requires=[
-        "boto3",
-        "pandas",
-        "pyarrow"
+        "boto3>=1.26.0,<2.0.0",
+        "pandas>=2.0.0,<3.0.0",
+        "pyarrow>=13.0.0,<22.0.0"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
