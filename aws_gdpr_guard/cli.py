@@ -25,7 +25,7 @@ def main():
         s3_client.put_object(Bucket=output_bucket, Key=output_key, Body=obfuscated_data)
         print(f"Uploaded obfuscated data to {args.output}")
     else:
-        print("Obfuscated data (first 100 bytes):", obfuscated_data[:100])
+        print("Obfuscated data:", obfuscated_data)
 
 
 if __name__ == "__main__":
