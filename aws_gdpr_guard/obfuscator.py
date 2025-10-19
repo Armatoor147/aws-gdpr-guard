@@ -224,26 +224,3 @@ class ObfuscationError(Exception):
     """Raised when the obfuscation process fails."""
 
     pass
-
-
-# if __name__ == "__main__":
-#     file_to_obfuscate = (
-#         "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.parquet"
-#     )
-#     pii_fields = ["name", "email_address"]
-#     data_type = "parquet"
-#     bytes_data = obfuscate_file(file_to_obfuscate, pii_fields, data_type)
-#     print(bytes_data)
-
-    # buffer = io.BytesIO(bytes_data)
-    # df = pd.read_parquet(buffer)
-    # print(df)
-
-    # s3_client = boto3.client("s3")
-    # s3_client.put_object(Bucket="vincent-toor-azorin-aws-gdpr-guard-test-bucket", Key="obfuscated_dummy_students.csv", Body=bytes_data)
-
-    # file_to_read = "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/obfuscated_dummy_students.csv"
-    # bucket_name, object_name = split_s3_uri(file_to_read)
-    # s3_client = boto3.client("s3")
-    # data = read_file_from_s3_bucket(s3_client, bucket_name, object_name)
-    # print(data)
