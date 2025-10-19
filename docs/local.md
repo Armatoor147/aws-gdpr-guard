@@ -67,6 +67,7 @@
             aws configure
             ```
 
+
 ### 2. Install and Configure the Library
 
 #### Option A: Use GitHub repo
@@ -84,6 +85,7 @@ source venv/bin/activate
 pip install requirements.txt
 ```
 
+
 #### Option B: Use `pip install`
 
 ```sh
@@ -95,6 +97,7 @@ pip install git+https://github.com/Armatoor147/aws-gdpr-guard
 
 
 ### 3. Use the Library
+
 * Create a Python file. If using the GitHub repository, ensure the file is placed inside the root directory.
 * If using a `.env` file (with your AWS credentials), store it next to the Python file, pip install `dotenv` and load credentials:
     ```python
@@ -144,4 +147,6 @@ pip install git+https://github.com/Armatoor147/aws-gdpr-guard
     - If using Git, always add `.env` to your `.gitignore` file.
     - For production, avoid `.env` files (use AWS Secrets Manager or SSM Parameter Store).
 
+- Make sure that the IAM user has S3 GetObject, ListObject (and PutObject if you upload the obfuscated data to S3).
 - Make sure that the `data_type` argument matches the data type and the file extension name of the S3 object in `file_to_obfuscate`.
+- Supported file types: csv, json, and parquet. Defaults to csv if not specified.
