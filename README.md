@@ -156,7 +156,7 @@ The `obfuscate_file` function was tested with CSV files of different sizes to ev
 - ~1MB file: The function executed in ~1.5 seconds, well under the 1-minute requirement.
 
 
-# Quality Assurance and CI/CD Validation
+## Quality Assurance and CI/CD Validation
 
 The GitHub Actions CI/CD pipeline successfully executed all checks:
 
