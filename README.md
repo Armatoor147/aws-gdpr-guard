@@ -48,7 +48,7 @@ This project consists of the following components:
 
 The `aws_gdpr_guard` python library includes the main obfuscator function `obfuscate_file` inside `aws_gdpr_guard.obfuscator.py` that uses the following utility functions:
 - `split_s3_uri`: Splits S3 URIs into bucket and key.
-- `read_file_from_s3_bucket`: Reads files from S3 bucket
+- `read_file_from_s3_bucket`: Reads files from S3 bucket (CSV, JSON or Parquet).
 - `obfuscate_df`: Obfuscates DataFrame columns.
 - `dataframe_to_bytes`: Converts DataFrame to byte strings.
 
