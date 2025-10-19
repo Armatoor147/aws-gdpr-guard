@@ -160,7 +160,6 @@ The `obfuscate_file` function was tested with CSV files of different sizes to ev
 
 The GitHub Actions CI/CD pipeline successfully executed all checks:
 
-The GitHub Actions CI/CD pipeline successfully executed all checks:
    Check      | Result                                                                 |
  |------------|------------------------------------------------------------------------|
  | black      | 4 files would be left unchanged (style enforced)                       |
