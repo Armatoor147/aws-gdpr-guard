@@ -23,9 +23,20 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
   role = aws_iam_role.aws_gdpr_guard_ec2_iam_role.name
 }
 
+# AMI (region-dependent)
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"] # Amazon Linux 2023
+  }
+}
+
 # EC2 instance
 resource "aws_instance" "aws_gdpr_guard_ec2_instance" {
-  ami                         = "ami-04c08fd8aa14af291"
+  ami                         = data.aws_ami.amazon_linux.id # "ami-04c08fd8aa14af291"
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.ec2_key_pair.key_name
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
