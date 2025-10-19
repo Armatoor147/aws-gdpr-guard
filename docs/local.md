@@ -90,13 +90,13 @@ pip install requirements.txt
 # Install the aws_gdpr_guard package
 python -m venv venv
 source venv/bin/activate
-pip install aws_gdpr_guard
+pip install git+https://github.com/Armatoor147/aws-gdpr-guard
 ```
 
 
 ### 3. Use the Library
 * Create a Python file. If using the GitHub repository, ensure the file is placed inside the root directory.
-* If using a `.env` file (with your AWS credentials), store it next to the Python file, and load credentials:
+* If using a `.env` file (with your AWS credentials), store it next to the Python file, pip install `dotenv` and load credentials:
     ```python
     from dotenv import load_dotenv
     load_dotenv()  # Loads AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
