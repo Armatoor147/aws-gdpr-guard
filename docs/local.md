@@ -150,3 +150,8 @@ pip install git+https://github.com/Armatoor147/aws-gdpr-guard
 - Make sure that the IAM user has S3 GetObject, ListObject (and PutObject if you upload the obfuscated data to S3).
 - Make sure that the `data_type` argument matches the data type and the file extension name of the S3 object in `file_to_obfuscate`.
 - Supported file types: csv, json, and parquet. Defaults to csv if not specified.
+
+
+## FAQ
+* *"Can I obfuscate multiple files?"* → Yes, loop over a list of `s3_uri`s.
+* *"How do I verify the obfuscation?"* → Download the file from S3 and inspect it.
