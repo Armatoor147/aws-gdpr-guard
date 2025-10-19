@@ -107,6 +107,7 @@ pip install aws_gdpr_guard
     obfuscated_data = obfuscate_file(
         file_to_obfuscate="s3://YOUR_BUCKET_NAME/path/to/file.csv"
         pii_fields=["name", "email", "phone_number"] # Columns to obfuscate
+        data_type = "csv"
     )
     ```
 
@@ -122,6 +123,7 @@ pip install aws_gdpr_guard
     obfuscated_data = obfuscate_file(
         file_to_obfuscate="s3://YOUR_BUCKET_NAME/file_to_obfuscate.csv"
         pii_fields=["name", "email", "phone_number"]
+        data_type = "csv"
     )
     s3_client = boto3.client("s3")
 
@@ -136,8 +138,10 @@ pip install aws_gdpr_guard
 
 ## Notes
 
-* Security Warnings:
+- Security Warnings:
     - Never hardcode credentials in your script.
     - Restrict S3 permissions to the specific bucket.
     - If using Git, always add `.env` to your `.gitignore` file.
     - For production, avoid `.env` files (use AWS Secrets Manager or SSM Parameter Store).
+
+- Make sure that the `data_type` argument matches the data type and the file extension name of the S3 object in `file_to_obfuscate`.
