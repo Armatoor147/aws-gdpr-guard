@@ -20,3 +20,5 @@ terraform-lambda-deployment/aws_gdpr_guard_layer.zip
 terraform-ec2-deployment/terraform.tfvars
 terraform-ec2-deployment/aws_gdpr_guard.zip
 terraform-ec2-deployment/keys/
+
+aws_gdpr_guard.egg-info/
