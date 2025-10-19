@@ -82,7 +82,7 @@ cd aws-gdpr-guard
 # Install the dependencies
 python -m venv venv
 source venv/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 
@@ -97,6 +97,11 @@ pip install git+https://github.com/Armatoor147/aws-gdpr-guard
 
 
 ### 3. Use the Library
+
+* If you cloned the GitHub repository, register the CLI command and install dependencies:
+```sh
+pip install -e .
+```
 
 * To view the obfuscated data from an S3 URI, run:
 ```sh
