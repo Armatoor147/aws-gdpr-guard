@@ -15,6 +15,11 @@ setup(
         "pandas>=2.0.0,<3.0.0",
         "pyarrow>=13.0.0,<22.0.0",
     ],
+    entry_points={
+        "console_scripts": [
+            "aws-gdpr-guard=aws_gdpr_guard.cli:main",
+        ]
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
