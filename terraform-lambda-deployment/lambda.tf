@@ -42,7 +42,7 @@ resource "aws_lambda_function" "lambda_function" {
     role = aws_iam_role.lambda_iam_role.arn
     filename = data.archive_file.lambda_zip.output_path
     layers = [
-        "arn:aws:lambda:eu-north-1:336392948345:layer:AWSSDKPandas-Python312:2",
+        "arn:aws:lambda:${var.aws_region}:336392948345:layer:AWSSDKPandas-Python312:2",
         aws_lambda_layer_version.aws_gdpr_guard_layer.arn
     ]
 
