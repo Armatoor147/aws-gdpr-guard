@@ -151,3 +151,6 @@ Have a look at `/docs`:
 * *"Can I obfuscate multiple files?"* → Yes, loop over a list of `s3_uri`s.
 * *"How do I verify the obfuscation?"* → Download the file from S3 and inspect it.
 
+---
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
