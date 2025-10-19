@@ -111,3 +111,4 @@ rm aws_gdpr_guard.zip
 
 * Always keep your .pem key secure and never share it.
 * If SSH fails, ensure the security group allows inbound traffic on port 22 and that the key is correct.
+* Make sure the IAM user's AWS region matches with the Terraform configuration.

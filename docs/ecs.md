@@ -152,3 +152,4 @@ terraform destroy
 ## Notes
 
 * Ensure the Docker image is built for the correct platform (`linux/amd64`).
+* Make sure the IAM user's AWS region matches with the Terraform configuration.

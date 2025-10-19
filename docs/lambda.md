@@ -97,3 +97,4 @@ rm lambda_function.zip
 * Add or change the IAM user/policy to your convenience if more permissions are required.
 * Store credentials securely (e.g., AWS Secrets Manager, encrypted local files).
 * Review the Terraform plan before applying.
+* Make sure the IAM user's AWS region matches with the Terraform configuration.
