@@ -52,6 +52,8 @@ The `aws_gdpr_guard` python library includes the main obfuscator function `obfus
 - `obfuscate_df`: Obfuscates DataFrame columns.
 - `dataframe_to_bytes`: Converts DataFrame to byte strings.
 
+To make the library usable as both a pip-installable package and a command-line tool, I implemented two additional components: The `setup.py` file defines the package metadata, dependencies, and entry points, enabling users to install the library via pip and register the aws-gdpr-guard CLI command. The `cli.py` script provides a user-friendly command-line interface, allowing users to invoke the obfuscation logic directly from the terminal—either to preview obfuscated data or upload results to S3. Together, these components bridge the gap between the core library logic and practical, real-world usage.
+
 
 ### **Pytest Suite**: Unit and integration tests for the library.
 
@@ -61,9 +63,7 @@ The `aws_gdpr_guard` python library includes the main obfuscator function `obfus
 4) Coverage: Verify every statement from the source code runs as espected.
 
 
-
 ### **CI/CD Pipeline**: Automated testing and deployment workflows.
-
 
 Setup:
 - Set up virtual environment
@@ -91,27 +91,34 @@ Checks:
 
 ```
 aws-gdpr-guard
-├── aws_gdpr_guard/                 # Python Library
+├── aws_gdpr_guard/                 # Core Python library for GDPR-compliant PII
 │   ├── __init__.py
 │   ├── obfuscator.py
-│   ├── requirements.txt
-├── tests/                          # Pytest Suite
+│   ├── cli.py
+│   ├── requirements.txt            # Production dependencies
+├── tests/                          # Unit and integration tests (pytest)
 │   ├── test_obfuscator.py
-├── Makefile
-├── .github/workflows/deploy.yml    # CI/CD Pipeline
+├── setup.py                        # Package metadata and installation configuration
+├── Makefile                        # Common development tasks
+├── .github/workflows/deploy.yml    # GitHub Actions CI/CD Pipeline
 ├── terraform-lambda-deployment     # Lambda deployment
 ├── terraform-ec2-deployment        # EC2 deployment
 ├── terraform-ecs-deployment        # ECS deployment
+├── Dockerfile                      # Containerization for ECS
+├── .dockerignore                   # Files to exclude from Docker builds
 ├── ec2_script.py                   # EC2 deployment script
 ├── lambda_function.py              # AWS Lambda function
+├── ecs_script.py                   # ECS deployment script
 ├── local_script.py                 # Local deployment script
-├── dummy_data                      # Test data
-├── .gitignore
+├── local_script_for_testing_1MB.py # Script for performance testing
+├── dummy_data/                     # Dummy data (CSV, JSON, Parquet)
+├── .gitignore                      # Files/dirs to exclude from Git
 ├── requirements.txt                # Production dependencies
 ├── requirements-dev.txt            # Development dependencies
 ├── requirements.in                 # Top-level dependencies
 ├── docs/                           # Deployment documentation
-└── README.md
+├── LICENSE                         # Project license (MIT)
+└── README.md                       # Project overview and instructions
 ```
 
 
