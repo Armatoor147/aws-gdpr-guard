@@ -55,9 +55,13 @@
                 {
                     "Sid": "CloudWatchLogsFullAccess",
                     "Effect": "Allow",
-                    "Action": [
-                        "logs:*"
-                    ],
+                    "Action": "logs:*",
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "ECRFullAccess",
+                    "Effect": "Allow",
+                    "Action": "ecr:*",
                     "Resource": "*"
                 }
             ]
@@ -71,7 +75,7 @@
 
 ### 2. Set up Docker, Configure AWS CLI and Deploy with Terraform
 
-- Write a Dockerfile and a .gitignore file (A functioning example is already written in the root directory)
+- Write a Dockerfile and a .dockerignore file (A functioning example is already written in the root directory)
 - Run the following:
 ```sh
 # Build Docker image
