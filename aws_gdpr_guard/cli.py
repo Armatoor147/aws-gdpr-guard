@@ -12,10 +12,11 @@ def main():
     parser.add_argument(
         "--pii-fields", nargs="+", required=True, help="List of PII fields to obfuscate"
     )
+    parser.add_argument("--data-type", type=str, default="csv", help="Type of the file (csv, json, or parquet). Defaults to 'csv'.")
     args = parser.parse_args()
 
     print(f"Obfuscating file at {args.s3_uri}...")
-    obfuscated_data = obfuscate_file(args.s3_uri, args.pii_fields)
+    obfuscated_data = obfuscate_file(args.s3_uri, args.pii_fields, args.data_type)
     print("Obfuscation complete!")
 
     if args.output:
