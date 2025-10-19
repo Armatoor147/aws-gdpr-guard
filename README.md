@@ -123,7 +123,6 @@ The project was developed in the following phases:
 2. Set up a CI/CD pipeline using Makefile and GitHub Actions to automate testing and ensure code quality.
 3. Manually deployed the library to AWS Lambda, EC2, and ECS to validate compatibility.
 4. Translated the infrastructure into Terraform modules for automated deployments.
-5. Integrated Terraform deployments into the CI/CD pipeline for seamless testing and deployment.
 
 
 ## Implementation
@@ -132,24 +131,23 @@ Have a look at `/docs`:
 
 * Option A: [Local Testing](docs/local.md)
 
-* Option B: [AWS Lambda](docs/lambda.md)
+* Option B: [CLI](docs/cli.md)
 
-* Option C: [EC2](docs/ec2.md)
+* Option C: [AWS Lambda](docs/lambda.md)
 
-* Option D: [ECS](docs/ecs.md)
+* Option D: [EC2](docs/ec2.md)
 
-
-
-
-
-## Troubleshooting
-* `"AccessDenied"` errors? Check IAM policies and bucket names.
-* Missing `.env`? Ensure the file is in the same directory as your script.
+* Option E: [ECS](docs/ecs.md)
 
 
-## FAQ
-* *"Can I obfuscate multiple files?"* → Yes, loop over a list of `s3_uri`s.
-* *"How do I verify the obfuscation?"* → Download the file from S3 and inspect it.
+
+## Performance Testing
+
+The `obfuscate_file` function was tested with CSV files of different sizes to evaluate its efficiency:
+
+- ~1KB file: The function executed in ~0.5 seconds.
+- ~1MB file: The function executed in ~1.5 seconds, well under the 1-minute requirement.
+
 
 ---
 ## License
