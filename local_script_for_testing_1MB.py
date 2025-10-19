@@ -16,8 +16,7 @@ if LOAD_ENVIRONMENT:
 
 
 def main():
-    file_to_obfuscate = "s3://vincent-toor-azorin-aws-gdpr-guard-test-bucket/dummy_students.csv"
-    # file_to_obfuscate = "s3://YOUR_BUCKET_NAME/file_to_obfuscate.csv"
+    file_to_obfuscate = "s3://YOUR_BUCKET_NAME/file_to_obfuscate.csv"
     pii_fields = ["name", "email_address"]
     data_type = "csv"
 
